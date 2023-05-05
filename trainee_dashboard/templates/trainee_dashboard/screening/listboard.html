@@ -1,0 +1,38 @@
+{% extends "edc_dashboard/listboard.html" %}
+{% load admin_urls %}
+{% load edc_base_extras %}
+
+{% block listboard_panel %}
+    <a id="subjectscreening_add" title="add screening" class="btn btn-sm btn-default" role="button" 
+        href="{{ subject_screening_add_url }}?next={{ screening_listboard_url }}">
+            <i class="fa fa-plus fa-sm"></i> Add Subject Screening
+    </a>
+{% endblock listboard_panel %}
+
+{% block listboard_table_header %}
+    <!-- begin results header -->
+    <th>#</th>
+    <th></th>
+    <th>Screening Identifier</th>
+    <th>Subject Identifier</th>
+    <th>Is Minor</th>
+    <th>User</th>
+    <!-- end results header -->
+{% endblock listboard_table_header %}
+
+
+{% block listboard_table_button_column %}
+    <td style="white-space: nowrap;">
+    <div class="btn-group ">
+
+{% endblock listboard_table_button_column %}		
+
+
+{% block listboard_table_columns %}
+
+    <td>{{ result.screening_identifier }} </td>
+    <td nowrap>{{ result.subject_identifier }}</td>
+    <td nowrap>{{ result.is_minor }}</td>
+    <td nowrap>{{ result.user_created }}</td>
+
+{% endblock listboard_table_columns %}

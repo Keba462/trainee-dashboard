@@ -126,12 +126,6 @@ DASHBOARD_URL_NAMES = {
 
 }
 
-DASHBOARD_BASE_TEMPLATES = {
-    'screening_listboard_template': 'trainee_dashboard/screening/listboard.html',
-    'subject_listboard_template': 'trainee_dashboard/subject/listboard.html',
-
-}
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
