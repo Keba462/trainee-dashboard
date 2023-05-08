@@ -1,2 +1,2 @@
 include  README.md 
-recursive-include potlako_dashboard/templates *
+recursive-include trainee_dashboard/templates *
