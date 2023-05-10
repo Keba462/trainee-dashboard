@@ -10,10 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -83,7 +84,7 @@ WSGI_APPLICATION = 'trainee_dashboard.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -123,12 +124,15 @@ USE_TZ = True
 DASHBOARD_URL_NAMES = {
     'subject_listboard_url': 'trainee_dashboard:subject_listboard_url',
     'screening_listboard_url': 'trainee_dashboard:screening_listboard_url',
+    'subject_dashboard_url': 'trainee_dashboard:subject_dashboard_url',
 
 }
 
 DASHBOARD_BASE_TEMPLATES = {
+    'dashboard_base_template': 'trainee/base.html',
     'screening_listboard_template': 'trainee_dashboard/screening/listboard.html',
     'subject_listboard_template': 'trainee_dashboard/subject/listboard.html',
+    'subject_dashboard_template': 'trainee_dashboard/subject/dashboard.html',
 
 }
 

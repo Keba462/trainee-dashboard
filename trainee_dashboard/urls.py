@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.urls.conf import path,include
-from trainee_dashboard.views import SubjectListboardView,SubjectScreeningListboardView
+from trainee_dashboard.views import SubjectListboardView,SubjectScreeningListboardView,SubjectDashboardView
 
 screening_identifier = '[A-Z0-9]{8}'
 subject_identifier = '122\-[0-9\-]+'
@@ -38,10 +38,19 @@ subject_listboard_url_config = UrlConfig(
     identifier_label='subject_identifier',
     identifier_pattern=subject_identifier)
 
+
+
+subject_dashboard_url_config = UrlConfig(
+    url_name='subject_dashboard_url',
+    view_class=SubjectDashboardView,
+    label='subject_dashboard',
+    identifier_label='subject_identifier',
+    identifier_pattern=subject_identifier)
+
 urlpatterns = []
 urlpatterns += subject_listboard_url_config.listboard_urls
 urlpatterns += screening_listboard_url_config.listboard_urls
-
+urlpatterns += subject_dashboard_url_config.dashboard_urls
 
 
 if settings.APP_NAME == 'trainee_dashboard':
@@ -50,6 +59,7 @@ if settings.APP_NAME == 'trainee_dashboard':
 
     urlpatterns += [
         path('accounts/', include('edc_base.auth.urls')),
+        path('edc_data_manager/', include('edc_data_manager.urls')),
         path('administration/', RedirectView.as_view(url='admin/'),
              name='administration_url'),
         path(r'', RedirectView.as_view(url='admin/'), name='home_url'),

@@ -1,6 +1,7 @@
 {% extends "edc_dashboard/listboard.html" %}
 {% load admin_urls %}
 {% load edc_base_extras %}
+{% load trainee_dashboard_extras %}
 
 {% block listboard_panel %}
     <a id="subjectscreening_add" title="add screening" class="btn btn-sm btn-default" role="button" 
@@ -20,12 +21,11 @@
     <!-- end results header -->
 {% endblock listboard_table_header %}
 
-
-{% block listboard_table_button_column %}
-    <td style="white-space: nowrap;">
-    <div class="btn-group ">
-
-{% endblock listboard_table_button_column %}		
+    {% block listboard_table_button_column %}
+        <td style="white-space: nowrap;">
+        <div class="btn-group ">
+    
+    {% endblock listboard_table_button_column %}	
 
 
 {% block listboard_table_columns %}

@@ -3,7 +3,7 @@ from edc_base.view_mixins import EdcBaseViewMixin
 from edc_dashboard.view_mixins import ListboardFilterViewMixin, SearchFormViewMixin
 from edc_dashboard.views import ListboardView as BaseListBoardView
 from trainee_dashboard.views.screening.filters import ListboardViewFilters
-from ...model_wrappers import SubjectConsentModelWrapper
+from ....model_wrappers import SubjectConsentModelWrapper
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
