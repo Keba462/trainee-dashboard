@@ -30,6 +30,8 @@ class DashboardView(EdcBaseViewMixin, SubjectDashboardViewMixin, NavbarViewMixin
     subject_locator_model = 'trainee_subject.subjectlocator'
     subject_locator_model_wrapper_cls = SpecialFormsModelWrapper
     visit_model_wrapper_cls = SubjectVisitModelWrapper
+    special_forms_include_value ="trainee_dashboard/subject/dashboard/special_forms.html"
+    data_action_item_template = "trainee_dashboard/subject/dashboard/data_manager.html"
 
 
     @property
@@ -89,3 +91,13 @@ class DashboardView(EdcBaseViewMixin, SubjectDashboardViewMixin, NavbarViewMixin
         except ObjectDoesNotExist:
             action_cls(
                 subject_identifier=subject_identifier)
+            
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        locator_obj = self.get_locator_info()
+        context.update(
+            locator_obj=locator_obj,
+            subject_consent=self.consent_wrapped,
+        )
+        return context
+            

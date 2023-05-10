@@ -3,3 +3,4 @@ from .subject_screening_model_wrapper import SubjectScreeningModelWrapper
 from .appointment_model_wrapper import AppointmentModelWrapper
 from .subject_visit_model_wrapper import SubjectVisitModelWrapper
 from .special_forms_model_wrapper import SpecialFormsModelWrapper
+from .subject_screening_model_wrapper_mixin import SubjectScreeningModelWrapperMixin

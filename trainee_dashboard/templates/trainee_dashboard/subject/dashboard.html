@@ -43,6 +43,12 @@
 
 
 {% block side_bar %}
+
+  {% block demographics %}   
+	
+      {% include 'trainee_dashboard/subject/dashboard/sidebar.html' %}
+
+  {% endblock demographics %}
 	
 	{% if locator_obj %}
     <div class="panel panel-default">
@@ -52,7 +58,7 @@
           </h6>
       </div>
       
-        {% include "trainee_dashboard/subject/dashboard/locator_info.html" %}   
+        {% include 'trainee_dashboard/subject/dashboard/locator_info.html' %}   
   	</div>
   	{% endif %}
 	

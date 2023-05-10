@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.conf import settings
 from django.urls.conf import path,include
+from .patterns import screening_identifier,subject_identifier
 from trainee_dashboard.views import SubjectListboardView,SubjectScreeningListboardView,SubjectDashboardView
 
-screening_identifier = '[A-Z0-9]{8}'
-subject_identifier = '122\-[0-9\-]+'
+
 
 from edc_dashboard import UrlConfig
 
