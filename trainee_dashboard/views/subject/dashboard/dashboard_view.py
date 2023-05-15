@@ -11,7 +11,7 @@ from django.contrib.messages import get_messages
 from django.core.exceptions import ObjectDoesNotExist
 from edc_action_item.site_action_items import site_action_items
 from trainee_subject.action_items import SUBJECT_LOCATOR_ACTION
-
+from django.apps import apps as django_apps
 
 
 
@@ -98,6 +98,22 @@ class DashboardView(EdcBaseViewMixin, SubjectDashboardViewMixin, NavbarViewMixin
         context.update(
             locator_obj=locator_obj,
             subject_consent=self.consent_wrapped,
+            community_arm =self.community_arm,
         )
         return context
             
+
+
+    @property
+    def community_arm(self):
+        onschedule_model_cls = django_apps.get_model(
+            'trainee_subject.onschedule')
+        subject_identifier = self.kwargs.get('subject_identifier')
+        try:
+            onschedule_obj = onschedule_model_cls.objects.get(
+                subject_identifier=subject_identifier)
+        except ObjectDoesNotExist:
+            return None
+        else:
+            return onschedule_obj.community_arm
+        
