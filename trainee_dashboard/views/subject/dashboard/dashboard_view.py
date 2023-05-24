@@ -5,6 +5,7 @@ from edc_dashboard.views import DashboardView as BaseDashboardView
 from trainee_dashboard.model_wrappers.appointment_model_wrapper import AppointmentModelWrapper
 from trainee_dashboard.model_wrappers.special_forms_model_wrapper import SpecialFormsModelWrapper
 from trainee_dashboard.model_wrappers.subject_consent_model_wrapper import SubjectConsentModelWrapper
+from trainee_dashboard.model_wrappers.subject_requisition_model_wrapper import SubjectRequisitionModelWrapper
 from trainee_dashboard.model_wrappers.subject_visit_model_wrapper import SubjectVisitModelWrapper
 from django.contrib import messages
 from django.contrib.messages import get_messages
@@ -12,6 +13,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from edc_action_item.site_action_items import site_action_items
 from trainee_subject.action_items import SUBJECT_LOCATOR_ACTION
 from django.apps import apps as django_apps
+
 
 
 
@@ -25,6 +27,7 @@ class DashboardView(EdcBaseViewMixin, SubjectDashboardViewMixin, NavbarViewMixin
     appointment_model_wrapper_cls = AppointmentModelWrapper
     consent_model = 'trainee_subject.subjectconsent'
     consent_model_wrapper_cls = SubjectConsentModelWrapper
+    requisition_model_wrapper_cls = SubjectRequisitionModelWrapper
     navbar_name = 'trainee_dashboard'
     navbar_selected_item = 'consented_subject'
     subject_locator_model = 'trainee_subject.subjectlocator'

@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.conf import settings
 from django.urls.conf import path,include
-from .patterns import screening_identifier,subject_identifier
-from trainee_dashboard.views import SubjectListboardView,SubjectScreeningListboardView,SubjectDashboardView
+from .patterns import screening_identifier,subject_identifier,sample_result_identifier
+from trainee_dashboard.views import SubjectListboardView,SubjectScreeningListboardView,SubjectDashboardView,SubjectResultListboardView
 
 
 
@@ -47,10 +47,18 @@ subject_dashboard_url_config = UrlConfig(
     identifier_label='subject_identifier',
     identifier_pattern=subject_identifier)
 
+subject_listboard_result_url_config = UrlConfig(
+    url_name='subject_result_listboard_url',
+    view_class=SubjectResultListboardView,
+    label='subject_result_listboard',
+    identifier_label='sample_id',
+    identifier_pattern=sample_result_identifier)
+
 urlpatterns = []
 urlpatterns += subject_listboard_url_config.listboard_urls
 urlpatterns += screening_listboard_url_config.listboard_urls
 urlpatterns += subject_dashboard_url_config.dashboard_urls
+urlpatterns += subject_listboard_result_url_config.listboard_urls
 
 
 if settings.APP_NAME == 'trainee_dashboard':
