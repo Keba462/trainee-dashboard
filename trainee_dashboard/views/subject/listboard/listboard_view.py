@@ -26,9 +26,6 @@ class ListboardView(EdcBaseViewMixin, NavbarViewMixin,
     search_form_url = 'subject_listboard_url'
    
 
-
-
-
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
