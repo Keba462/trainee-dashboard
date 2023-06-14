@@ -21,15 +21,7 @@
 {% endblock listboard_table_header %}
 
 {% block listboard_table_button_column %}
-	{% comment %}
-
-    result: model_wrapper, usually the SubjectConsentModelWrapper
-        Required attributes:
-            subject_identifier
-            version: (consent version)
-            href: (model_wrapper.href)
-
-	{% endcomment %}
+	
 	<td style="white-space: nowrap">
     <div class="btn-group">
     <a title="Edit subject's consent form" role="button" 
@@ -37,13 +29,9 @@
            href="{{ result.href }}">
         <i class="fa fa-pencil-alt fa-sm"></i>
     </a>
-    {% if result.id and result.subject_locator %}
-
-         <a id="btn-subject-dashboard-{{result.subject_identifier}}" class="btn btn-sm {{result.navigation_status}} dash-btn" role="button"   
-        title="Go to subject's dashboard" href="{% url subject_dashboard_url result.subject_identifier %}">
-        <i class="far fa-user-circle fa-sm"></i> Dashboard <i class="fa fa-share"></i></a>
-      {% else %}
-      {% subject_locator_button result %}
+    {% subject_locator_button result %}
+    {% if result.subject_locator %}
+    {%dashboard_button result%}
     {% endif %}
     </div>
 	</td>
